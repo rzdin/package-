@@ -6,13 +6,9 @@ pipeline {
     stage('build') {
       steps {
           sh 'npm install'
+          
     
       }
     }
-    stage('package') {
-      steps {
-           zip zipFile: 'hello-serverless',  dir:/var/lib/jenkins/workspace/my-package-jenkins-job
-     }
-   }
  }
 }
