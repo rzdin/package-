@@ -5,7 +5,17 @@ pipeline {
     stage('build') {
       steps {
           sh 'npm install'
-          sh 'zip myfile-$BUILD_NUMBER-$TIMESTAMP.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
+          sh 'zip myfile.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
+          sh 'file_name=myfile.zip'
+ 
+          sh 'current_time=$(date "+%Y.%m.%d-%H.%M.%S")'
+          echo "Current Time : $current_time"'
+ 
+          sh 'new_fileName=$file_name.$current_time'
+          echo "New FileName: " "$new_fileName"'
+ 
+          sh 'cp $file_name $new_fileName'
+          echo "You should see new file generated with timestamp on it.."
       }
     }
   }
