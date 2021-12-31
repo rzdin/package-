@@ -5,7 +5,7 @@ pipeline {
     stage('build') {
       steps {
           sh 'npm install'
-          sh 'zip myfile.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
+          sh 'zip myfile-$BUILD_NUMBER.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
       }
     }
   }
