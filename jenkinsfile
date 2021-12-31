@@ -5,12 +5,8 @@ pipeline {
     stage('build') {
       steps {
           sh 'npm install'
-          sh 'zip myfile.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
-          sh 'file_name=myfile.zip'
- 
-          sh 'current_time=$(date "+%Y.%m.%d-%H.%M.%S")'
- 
-          sh 'new_fileName=$file_name.$current_time'
+          sh 'zip myfile-$BUILD_TIMESTAMP.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
+          
  
       }
     }
