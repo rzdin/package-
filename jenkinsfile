@@ -12,7 +12,6 @@ pipeline {
           echo "Current Time : $current_time"
  
           sh 'new_fileName=$file_name.$current_time'
-          echo "New FileName: " "$new_fileName"
  
       }
     }
