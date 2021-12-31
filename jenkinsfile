@@ -1,19 +1,31 @@
 pipeline {
-  agent any
-  tools {nodejs "NODEJS"}    
-  stages {
-    stage('build') {
-      steps {
-          sh 'npm install'
-          sh 'zip filname=myfile-$BUILD_TIMESTAMP.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
-          
- 
-      }
+    agent any
+    environment {
+        bucket = "sam-jenkins-demo-us-east-2-ranaziauddin"
+        region = "us-east-2"
+        aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
     }
-    stage('Configure sam') {
-       steps {
-          sh 's3Upload(file:'filname', bucket:'sam-jenkins-demo-us-east-2-ranaziauddin', path:'/var/lib/jenkins/workspace/my-package-jenkins-job/filname')
-      }
+    
+    tools {
+        
+        tools {nodejs "NODEJS"} 
     }
-  }
+    stage("Nodejs build"){
+        steps {
+                sh "npm install"
+        }
 }
+    stage("zipfiles"){
+        steps {
+            sh "sh 'filename=zip filname=myfile-$BUILD_TIMESTAMP.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'"
+        }
+    }
+    stage("Upload"){
+        steps{
+            withAWS(region:"${region}", credentials:"${aws_credential}){
+                    s3Upload(file:"${filename}", bucket:"${bucket}")
+                }    
+        }
+    }
+
+        }
