@@ -1,0 +1,39 @@
+{
+  "name": "hello-serverless",
+  "version": "0.2.0",
+  "description": "Hello World application for the Serverless framework",
+  "main": "greetings.js",
+  "scripts": {
+    "lint": "eslint **/*.js",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha **/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwarman/hello-serverless-aws-nodejs.git"
+  },
+  "keywords": [
+    "hello",
+    "world",
+    "serverless"
+  ],
+  "author": "Matthew Warman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mwarman/hello-serverless-aws-nodejs/issues"
+  },
+  "homepage": "https://github.com/mwarman/hello-serverless-aws-nodejs#readme",
+  "dependencies": {
+    "aws-sdk": "^2.141.0",
+    "lodash": "^4.17.4",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-config-google": "^0.9.1",
+    "expect": "^21.2.1",
+    "mocha": "^4.0.1",
+    "rewire": "^2.5.2",
+    "serverless-domain-manager": "^1.1.16",
+    "sinon": "^4.1.1"
+  }
+}
