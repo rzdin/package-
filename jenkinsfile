@@ -9,5 +9,10 @@ pipeline {
     
       }
     }
-  }
+    stage('package') {
+      steps {
+           zip zipFile: 'hello-serverless',  dir:/var/lib/jenkins/workspace/my-package-jenkins-job
+     }
+   }
+ }
 }
