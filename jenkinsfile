@@ -5,9 +5,14 @@ pipeline {
     stage('build') {
       steps {
           sh 'npm install'
-          sh 'zip myfile-$BUILD_TIMESTAMP.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
+          sh 'zip filname=myfile-$BUILD_TIMESTAMP.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
           
  
+      }
+    }
+    stage('Configure sam') {
+       steps {
+          sh 's3Upload(file:'filname', bucket:'sam-jenkins-demo-us-east-2-ranaziauddin', path:'/var/lib/jenkins/workspace/my-package-jenkins-job/filname')
       }
     }
   }
