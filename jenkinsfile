@@ -12,12 +12,10 @@ pipeline {
             steps {
                 sh 'rm -rf *.myapp'
                 sh "npm install"
-                sh 'ls -l'
-                sh 'mkdir myapp'
-                sh 'cp –R /var/lib/jenkins/workspace/my-package-jenkins-job /myapp'
+               
                 
     
-                sh "zip zipFile: 'myapp-${BUILD_TIMESTAMP}.zip" 
+                sh "zip zipFile: 'myapp-${BUILD_TIMESTAMP}.zip', dir:  '/var/lib/jenkins/workspace/my-package-jenkins-job'
         }
 }
         stage("Upload"){
