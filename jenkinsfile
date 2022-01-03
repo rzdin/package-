@@ -6,7 +6,7 @@ pipeline {
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
     }
-    stage{
+    stages{
     
         tools {
         
