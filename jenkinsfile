@@ -17,7 +17,7 @@ pipeline {
         stage("zipfiles"){
             steps {
                 sh "mkdir -p output"
-                writeFile file: "output/myfile-${BUILD_NUMBER}.zip", zipFile: "db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils"
+                writeFile file: "output/myfile-${BUILD_NUMBER}.zip", zip zipFile: "db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils"
         }
     }
         stage("Upload"){
