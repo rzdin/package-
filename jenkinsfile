@@ -15,7 +15,7 @@ pipeline {
                
                 
     
-                sh "zip zipFile: 'myapp-${BUILD_TIMESTAMP}.zip', dir:  '/var/lib/jenkins/workspace/my-package-jenkins-job'
+                sh "zip zipFile: 'myapp-${BUILD_TIMESTAMP}.zip', dir:  '/var/lib/jenkins/workspace/my-package-jenkins-job'"
         }
 }
         stage("Upload"){
