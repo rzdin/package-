@@ -10,7 +10,7 @@ pipeline {
         stage("Nodejs build"){
             tools {nodejs "NODEJS"}
             steps {
-                rm -rf *.myapp
+                sh 'rm -rf *.myapp'
                 sh "npm install"
                 sh 'ls -l'
                 sh 'mkdir myapp'
