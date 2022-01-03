@@ -6,29 +6,31 @@ pipeline {
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
     }
+    stage{
     
-    tools {
+        tools {
         
         tools {nodejs "NODEJS"} 
     }
-    stage("Nodejs build"){
-        steps {
+        stage("Nodejs build"){
+            steps {
                 sh "npm install"
         }
 }
-    stage("zipfiles"){
-        steps {
-            sh "mkdir ${TAG_NAME}-${BRANCH_NAME}"
+        stage("zipfiles"){
+            steps {
+                sh "mkdir ${TAG_NAME}-${BRANCH_NAME}"
                 dir("${TAG_NAME}-${BRANCH_NAME}")
                 zip zipfile: '${application_name}', dir: '/var/lib/jenkins/workspace/my-package-jenkins-job/*'
         }
     }
-    stage("Upload"){
-        steps{
-              sh  'withAWS(region:"${region}", credentials:"${aws_credential}){s3Upload(file:"${dir}", bucket:"${bucket}")'
+        stage("Upload"){
+            steps{
+                sh  'withAWS(region:"${region}", credentials:"${aws_credential}){s3Upload(file:"${dir}", bucket:"${bucket}")'
                   }
             }
-        }    
+        }
+     }   
 
 
 
