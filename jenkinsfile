@@ -7,11 +7,8 @@ pipeline {
         application_name = "Nodejs"
     }
     stages{
-    
-        tools {
-        
         tools {nodejs "NODEJS"} 
-    }
+ 
         stage("Nodejs build"){
             steps {
                 sh "npm install"
@@ -21,7 +18,7 @@ pipeline {
             steps {
                 sh "mkdir ${TAG_NAME}-${BRANCH_NAME}"
                 dir("${TAG_NAME}-${BRANCH_NAME}")
-                zip zipfile: '${application_name}', dir: '/var/lib/jenkins/workspace/my-package-jenkins-job/*'
+                zip Zipfile: '${application_name}', dir: '/var/lib/jenkins/workspace/my-package-jenkins-job/*'
         }
     }
         stage("Upload"){
