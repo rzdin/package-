@@ -20,7 +20,7 @@ pipeline {
     }
         stage("Upload"){
             steps{
-                sh  'withAWS(credentials: "${aws_credential}", region: "${region}")'{s3Upload(file:"${myfile-${BUILD_NUMBER}.zip}", bucket:"${bucket}")'
+                sh  'withAWS(credentials: "${aws_credential}", region: "${region}")' '{s3Upload(file:"${myfile-${BUILD_NUMBER}.zip}", bucket:"${bucket}")'
                   }
             }
         }
