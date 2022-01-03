@@ -14,8 +14,6 @@ pipeline {
                 sh "zip zipFile: 'myfile-${BUILD_TIMESTAMP}.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'"
         }
 }
-
-    }
         stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
