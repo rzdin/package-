@@ -1,15 +1,14 @@
 pipeline {
     agent any
+    tools {
+        
+        tools {nodejs "NODEJS"} 
     environment {
         bucket = "sam-jenkins-demo-us-east-2-ranaziauddin"
         region = "us-east-2"
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
     }
-    
-    tools {
-        
-        tools {nodejs "NODEJS"} 
-    }
+ }
     stage("Nodejs build"){
         steps {
                 sh "npm install"
@@ -21,7 +20,7 @@ pipeline {
             sh "zip zipFile: 'myfile-${BUILD_TIMESTAMP}-${TAG_NAME}-${BRANCH_NAME}.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils"
         }
     }
-   }
+  }
  
     
 
