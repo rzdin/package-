@@ -6,12 +6,16 @@ pipeline {
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
     }
-    stages{
+     stages{
         stage("Nodejs build"){
             tools {nodejs "NODEJS"}
             steps {
                 sh "npm install"
-                sh "zip zipFile: 'myfile-${BUILD_TIMESTAMP}.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'"
+                sh 'ls -l'
+                dir ('myfile') {
+                    writeFile file:'db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
+    
+                sh "zip zipFile: 'myfile-${BUILD_TIMESTAMP}.zip 
         }
 }
         stage("Upload"){
