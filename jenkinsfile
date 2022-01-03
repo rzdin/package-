@@ -15,13 +15,13 @@ pipeline {
 }
         stage("zipfiles"){
             steps {
-                sh "zip zipFile: 'myfile-${BUILD_NUMBER}.zip' db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils"
+                sh "zip filename=zipFile: 'myfile-${BUILD_NUMBER}.zip' db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils"
         }
     }
         stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
-                s3Upload(file:"${myfile-${BUILD_NUMBER}.zip}", bucket:"${bucket}")
+                s3Upload(file:"${filname}", bucket:"${bucket}")
                   }
             }
         }
