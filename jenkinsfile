@@ -17,12 +17,12 @@ pipeline {
 }
     stage("zipfiles"){
         steps {
-            sh "sh 'filename= zip zipFile: 'myfile-${BUILD_TIMESTAMP}-${TAG_NAME}-${BRANCH_NAME}.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'"
+            sh "filename= zip zipFile: 'myfile-${BUILD_TIMESTAMP}-${TAG_NAME}-${BRANCH_NAME}.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'"
         }
     }
     stage("Upload"){
         steps{
-                withAWS(region:"${region}", credentials:"${aws_credential}){ s3Upload(file:"{$filename}", bucket:"${bucket}")}
+                withAWS(region:"${region}", credentials:"${aws_credential}){ s3Upload(file:"${filename}", bucket:"${bucket}")}
                     
             }
         }    
