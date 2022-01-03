@@ -7,9 +7,8 @@ pipeline {
         application_name = "Nodejs"
     }
     stages{
-        tools {nodejs "NODEJS"} 
- 
         stage("Nodejs build"){
+            tools {nodejs "NODEJS"}
             steps {
                 sh "npm install"
         }
