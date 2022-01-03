@@ -15,6 +15,7 @@ pipeline {
 }
         stage("zipfiles"){
             steps {
+                sh 'rm -rf *.zip
                 sh "zip zipFile: 'myfile-${BUILD_NUMBER}.zip' db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils"
         }
     }
