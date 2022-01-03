@@ -21,5 +21,7 @@ pipeline {
             sh "zip zipFile: 'myfile-${BUILD_TIMESTAMP}-${TAG_NAME}-${BRANCH_NAME}.zip db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils"
         }
     }
+   }
+ }
     
 
