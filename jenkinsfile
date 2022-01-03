@@ -13,16 +13,16 @@ pipeline {
                 sh "npm install"
                 sh 'ls -l'
                 sh 'mkdir myapp'
-                sh cp –R /var/lib/jenkins/workspace/my-package-jenkins-job /myapp
+                sh 'cp –R /var/lib/jenkins/workspace/my-package-jenkins-job /myapp'
                 
     
-                sh "zip zipFile: 'myapp-${BUILD_TIMESTAMP}.zip 
+                sh "zip zipFile: 'myapp-${BUILD_TIMESTAMP}.zip" 
         }
 }
         stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
-                s3Upload(file:'dir.zip', bucket:"${bucket}")
+                s3Upload(file:'myapp', bucket:"${bucket}")
                
                   }
             }
