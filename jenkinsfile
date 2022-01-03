@@ -15,7 +15,8 @@ pipeline {
                
                 
     
-                sh "zip zipFile: 'myapp-${BUILD_TIMESTAMP}.zip', dir:  '/var/lib/jenkins/workspace/my-package-jenkins-job'"
+                sh "zip zipFile: 'myapp-${BUILD_TIMESTAMP}.zip' db       jenkinsfile  model  node_modules  README.md       utils
+                    handler  LICENSE      myapp  package.json  serverless.yml"
         }
 }
         stage("Upload"){
