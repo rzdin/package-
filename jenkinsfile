@@ -12,10 +12,11 @@ pipeline {
             steps {
                 sh "npm install"
                 sh 'ls -l'
-                dir ('myfile') {
-                    writeFile file:'db  handler  jenkinsfile  LICENSE  model  node_modules  package.json  README.md  serverless.yml  utils'
+                sh 'mkdir myapp'
+                sh cp –R /var/lib/jenkins/workspace/my-package-jenkins-job /myapp
+                
     
-                sh "zip zipFile: 'dir.zip' 
+                sh "zip zipFile: 'myapp-${BUILD_TIMESTAMP}.zip 
         }
 }
         stage("Upload"){
