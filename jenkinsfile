@@ -9,6 +9,9 @@ pipeline {
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
     }
     stages{
+      tools {
+        tools {nodejs "NODEJS"} 
+     }
       stage("Nodejs build"){
         steps {
                 sh "npm install"
