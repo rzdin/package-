@@ -12,12 +12,7 @@ pipeline {
      stages{
          stage('pull artifact') {
              steps {
-                   step([  $class: 'CopyArtifact',
-                           filter: 'myapp.zip',
-                           fingerprintArtifacts: true,
-                           projectName: '${my_package_jenkins_job}',
-                           selector: [$class:  '${BUILD_TIMESTAMP}'] ])
-                  unzip zipFile: 'myapp.zip', dir: './my_package_jenkins_job'
+                   sh 'cp -R /var/lib/jenkins/workspace/my_package_jenkins_job/myapp_${BUILD_TIMSTAMP}.zip  /var/lib/jenkins/workspace/my_deployement_job/'
                                  
     }
   }
