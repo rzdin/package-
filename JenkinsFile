@@ -11,7 +11,7 @@ pipeline {
      stages{
         stage("unzipe"){
             steps {
-                sh "unzip 'myapp*.zip'"
+                sh "unzip 'myapp_.zip'"
                
                   
         }
