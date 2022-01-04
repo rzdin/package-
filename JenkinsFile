@@ -16,7 +16,7 @@ pipeline {
                            filter: 'myapp.zip',
                            fingerprintArtifacts: true,
                            projectName: '${my_package_jenkins_job}',
-                           selector: [$class: 'SpecificBuildSelector' BUILD_TIMESTAMP: '${BUILD_TIMESTAMP}'] ])
+                           selector: [$class: 'SpecificBuildSelector', BUILD_TIMESTAMP: '${BUILD_TIMESTAMP}'] ])
                   unzip zipFile: 'myapp.zip', dir: './my_package_jenkins_job'
                                  
     }
