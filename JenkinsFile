@@ -11,7 +11,7 @@ pipeline {
      stages{
         stage("unzipe"){
             steps {
-                unzip zipFile: 'myapp_${BUILD_TIMESTAMP}_${TAG_NAME}.zip'
+                sh 'unzip zipFile: 'myapp_${BUILD_TIMESTAMP}_${TAG_NAME}.zip'
                
                   
         }
