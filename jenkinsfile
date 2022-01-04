@@ -15,7 +15,7 @@ pipeline {
                
                 
     
-                sh "zip 'myapp.zip' db jenkinsfile  model  node_modules  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
+                sh "zip 'myapp-${BUILD_NUMBER}.zip' db jenkinsfile  model  node_modules  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
                
                   
         }
