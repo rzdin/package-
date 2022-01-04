@@ -10,20 +10,19 @@ pipeline {
        
     }
      stages{
-          stage('Copy Archive') {
-         steps {
-             script {
-                step ([$class: 'CopyArtifact',
-                    projectName: 'my-package-jenkins-job',
-                    filter: "**/myapp*.zip",
-                    target: '/var/lib/jenkins/workspace/my_depolyment_job']);
-            }
-        }
+         stage('pull artifact') {
+             steps {
+                    step([  $class: 'CopyArtifact',
+                            filter: 'myapp.zip',
+                            fingerprintArtifacts: true,
+                            projectName: '${my_package_jenkins_job}',
+                            selector: [$class: 'SpecificBuildSelector', buildTimestamp: '${BUILD_TIMESTAMP}']
+        ])
+            unzip zipFile: 'myapp.zip', dir: './my_package_jenkins_job'
+        
     }
-        stage("unzipe"){
-            steps {
-                sh "copyArtifacts(projectName: 'my-package-jenkins-job');"
-                sh "unzip 'myapp_${BUILD_TIMESTAMP}.zip', dir: 'var/lib/jenkins/workspace/my-package-jenkins-job'"
+}
+      
                
                   
         }
