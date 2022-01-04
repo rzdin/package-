@@ -17,7 +17,7 @@ pipeline {
                
     
                 sh "zip 'myapp_${BUILD_TIMESTAMP}.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
-                sh "archiveArtifacts artifacts: 'myapp_${BUILD_TIMESTAMP}.zip'"
+               
                
                   
         }
