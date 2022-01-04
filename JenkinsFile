@@ -15,11 +15,11 @@ pipeline {
                                 step([  $class: 'CopyArtifact',
                                         filter: 'myapp.zip',
                                         fingerprintArtifacts: true,
-                                        projectName: '${my_package_jankins_job}',
+                                        projectName: '${my_package_jenkins_job}',
                                         selector: [$class: 'SpecificBuildSelector', buildTimestamp: '${BUILD_TIMESTAMP}']
                                 ])
-                                 unzip zipFile: 'test.zip', dir: './archive_new'
-                                 sh 'cat archive_new/test.txt'
+                                 unzip zipFile: 'myapp.zip', dir: './my_package_jenkins_job'
+                                 
     }
 }
      
