@@ -29,11 +29,11 @@ pipeline {
                
                   }
             }
-        post('make artifact'){ 
-            steps{
-                archiveArtifacts artifacts: 'myapp_${BUILD_TIMESTAMP}.zip', onlyIfSuccessful: true    
-            }
-            }
+     post { 
+        always { 
+            archiveArtifacts artifacts: 'myapp_${BUILD_TIMESTAMP}.zip', onlyIfSuccessful: true
+        }
+    }
         }
      }  
     }
