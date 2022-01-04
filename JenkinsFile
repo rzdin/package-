@@ -11,16 +11,17 @@ pipeline {
     }
      stages{
          stage('pull artifact') {
-                        steps {
-                                step([  $class: 'CopyArtifact',
-                                        filter: 'myapp.zip',
-                                        fingerprintArtifacts: true,
-                                        projectName: '${my_package_jenkins_job}',
-                                        selector: [$class: 'SpecificBuildSelector', buildTimestamp: '${BUILD_TIMESTAMP}']
-                                ])
-                                 unzip zipFile: 'myapp.zip', dir: './my_package_jenkins_job'
+             steps {
+                   step([  $class: 'CopyArtifact',
+                           filter: 'myapp.zip',
+                           fingerprintArtifacts: true,
+                           projectName: '${my_package_jenkins_job}',
+                           selector: [$class: 'SpecificBuildSelector', buildTimestamp: '${BUILD_TIMESTAMP}']
+                 ])
+                  unzip zipFile: 'myapp.zip', dir: './my_package_jenkins_job'
                                  
     }
+  }
 }
      
         stage("Upload"){
