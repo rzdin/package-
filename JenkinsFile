@@ -10,9 +10,15 @@ pipeline {
        
     }
      stages{
-         stage('pull artifact') {
-             steps {
-                   sh 'cp -R /var/lib/jenkins/workspace/my_package_jenkins_job/myapp_${BUILD_TIMSTAMP}.zip  /var/lib/jenkins/workspace/my_deployement_job/'
+          stage ('Copy Build Artifact') {
+            steps {
+                echo 'Copying artifact from projectA'
+                copyArtifacts(projectName: 'projectA', filter:'Debug.7z', optional: true);
+                // OR
+                // copyArtifacts(projectName: 'projectA', filter:'Debug.7z', selector: specific('5'), optional: true);
+            }
+        }
+    
                                  
     }
   }
