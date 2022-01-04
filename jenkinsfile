@@ -5,7 +5,7 @@ pipeline {
         region = "us-east-2"
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
-        
+        ReleaseVersion = '1.0'
     }
      stages{
         stage("Nodejs build"){
@@ -16,7 +16,7 @@ pipeline {
                
                
     
-                sh "zip 'myapp-${BUILD_TIMESTAMP}-${BUILD_NUMBER}.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
+                sh "zip 'myapp-${BUILD_TIMESTAMP}-${BUILD_NUMBER}-${TAG_NAME}.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
                
                   
         }
@@ -24,7 +24,7 @@ pipeline {
         stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
-                s3Upload(file:"myapp-${BUILD_TIMESTAMP}-${BUILD_NUMBER}-v1.0.zip", bucket:"${bucket}")
+                s3Upload(file:"myapp-${BUILD_TIMESTAMP}-${BUILD_NUMBER}-${TAG_NAME}.zip", bucket:"${bucket}")
                
                   }
             }
