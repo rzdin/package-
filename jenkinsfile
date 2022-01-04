@@ -17,7 +17,7 @@ pipeline {
                
     
                 sh "zip 'myapp_${BUILD_TIMESTAMP}.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
-               
+              
                
                   
         }
@@ -28,6 +28,11 @@ pipeline {
                 s3Upload(file:"myapp_${BUILD_TIMESTAMP}.zip", bucket:"${bucket}")
                
                   }
+            }
+        post('make artifact'){ 
+            steps{
+                archiveArtifacts artifacts: 'myapp_${BUILD_TIMESTAMP}.zip', onlyIfSuccessful: true    
+            }
             }
         }
      }  
