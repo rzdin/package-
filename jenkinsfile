@@ -24,7 +24,7 @@ pipeline {
         stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
-                s3Upload(file:"myapp-${BUILD_TIMESTAMP}-${BUILD_NUMBER}-${TAG_NAME}.zip", bucket:"${b]ucket}")
+                s3Upload(file:"myapp-${BUILD_TIMESTAMP}-${BUILD_NUMBER}-${TAG_NAME}.zip", bucket:"${bucket}")
                
                   }
             }
