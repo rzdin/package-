@@ -6,6 +6,7 @@ pipeline {
         region = "us-east-1"
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
+        copyArtifacts(projectName: 'my-package-jenkins-job');
        
     }
      stages{
