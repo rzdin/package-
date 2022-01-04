@@ -6,12 +6,13 @@ pipeline {
         region = "us-east-1"
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
-        copyArtifacts(projectName: 'my-package-jenkins-job');
+       
        
     }
      stages{
         stage("unzipe"){
             steps {
+                sh "copyArtifacts(projectName: 'my-package-jenkins-job');"
                 sh "unzip 'myapp_${BUILD_TIMESTAMP}.zip', dir: 'var/lib/jenkins/workspace/my-package-jenkins-job'"
                
                   
