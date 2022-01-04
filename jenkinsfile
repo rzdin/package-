@@ -13,7 +13,7 @@ pipeline {
                 sh 'rm -rf *.zip'
                 sh "npm install"
                
-                filename = 'myapp-${BUILD_TIMESTAMP}-${BUILD_NUMBER}'
+                sh "filename = 'myapp-${BUILD_TIMESTAMP}-${BUILD_NUMBER}'"
     
                 sh "zip '${filename}' db jenkinsfile  model  node_modules  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
                
