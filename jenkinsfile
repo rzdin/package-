@@ -22,6 +22,21 @@ pipeline {
                   
         }
 }
+        stage("push artifacts"){
+            steps{
+                 sh  "mkdir -p output"
+                 writeFile file: "output/myapp_${BUILD_TIMESTAMP}.zip"
+                
+               
+                  }
+            }
+        stage("archive artifacts"){
+            steps{
+                 archiveArtifacts artifacts: 'output/*.zip'
+                
+               
+                  }
+            }
         stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
