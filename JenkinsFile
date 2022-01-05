@@ -18,9 +18,6 @@ pipeline {
                 // copyArtifacts(projectName: 'projectA', filter:'Debug.7z', selector: specific('5'), optional: true);
             }
         }
-    
-                                 
-    }
   
         stage("Upload"){
             steps{
