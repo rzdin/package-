@@ -14,6 +14,7 @@ pipeline {
      stages{
           stage ('Copy Build Artifact') {
             steps {
+                    sh 'rm -rf *.zip'
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           s3Download(
                                       file:"myapp_${BUILD_TIMESTAMP}.zip", 
