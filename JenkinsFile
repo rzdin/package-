@@ -21,7 +21,7 @@ pipeline {
     
                                  
     }
-  }
+  
         stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
@@ -31,7 +31,7 @@ pipeline {
             }
         }
      }
-   }
+ 
     
   
       
