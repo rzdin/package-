@@ -14,11 +14,11 @@ pipeline {
             steps {
                 withAWS {
                           s3Download(
-                                      file:"path/in/your/Jenkins/workspace", 
-                                      bucket: , 
-                path:"$folderPath/", 
-                force:true)
-    }
+                                      file:"myapp_${BUILD_TIMESTAMP}.zip", 
+                                      bucket: sam-jenkins-demo-us-east-2-ranaziauddin, 
+                                      path:"/var/lib/jenkins/workspace/my_depolyment_job", 
+                                      force:true)   
+                         }
                 
                 
             }   
