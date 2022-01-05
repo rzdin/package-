@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        bucket = "sam-jenkins-demo-us-west-2-ranaziauddin"
+        bucket = "sam-jenkins-demo-us-west-2-rana-ziauddin"
         region = "us-east-1"
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
