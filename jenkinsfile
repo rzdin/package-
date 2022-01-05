@@ -32,7 +32,7 @@ pipeline {
             }
         stage("archive artifacts"){
             steps{
-                 archiveArtifacts artifacts:  *.zip'
+                 archiveArtifacts artifacts:  '*.zip'
                 
                
                   }
