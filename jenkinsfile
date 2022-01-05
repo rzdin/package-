@@ -25,7 +25,7 @@ pipeline {
         stage("push artifacts"){
             steps{
                  sh  "mkdir -p output"
-                 "writeFile file: 'output/myapp_${BUILD_TIMESTAMP}.zip'"
+                     "writeFile file: 'output/myapp_${BUILD_TIMESTAMP}.zip'"
                 
                
                   }
