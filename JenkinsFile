@@ -26,7 +26,7 @@ pipeline {
         }
         stage ('unzip') {
             steps {
-                 sh "unzip 'myapp_${BUILD_TIMESTAMP}'"
+                 sh "unzip zipFile: 'myapp_${BUILD_TIMESTAMP}', dir: './my_depolyment_job'"
         }
     }
   }
