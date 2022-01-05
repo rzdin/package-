@@ -16,7 +16,7 @@ pipeline {
             steps {
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           s3Download(
-                                      file:"*.zip", 
+                                      file:"myapp ${BUILD_NUMBER}.zip", 
                                       bucket: "${bucket1}", 
                                       path:"/var/lib/jenkins/workspace/my_depolyment_job/", 
                                       force:true)   
