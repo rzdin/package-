@@ -3,7 +3,9 @@ pipeline {
     agent any
     environment {
         bucket = "sam-jenkins-demo-us-west-2-rana-ziauddin"
+        bucket1 = "sam-jenkins-demo-us-east-2-ranaziauddin"
         region = "us-east-1"
+        region1 = "us-east-2"
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
        
@@ -12,10 +14,10 @@ pipeline {
      stages{
           stage ('Copy Build Artifact') {
             steps {
-                withAWS (credentials: "${aws_credential}", region: 'us-east-2'){
+                withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           s3Download(
                                       file:"*.zip", 
-                                      bucket: "sam-jenkins-demo-us-east-2-ranaziauddin", 
+                                      bucket: "${bucket1}", 
                                       path:"/var/lib/jenkins/workspace/my_depolyment_job", 
                                       force:true)   
                          }
