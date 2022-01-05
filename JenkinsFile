@@ -17,12 +17,12 @@ pipeline {
                     sh 'rm -rf *.zip'
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           s3Download(
-                                      file:"myapp_${BUILD_TIMESTAMP}${BUILD_NUMBER}.zip", 
+                                      file:"myapp_${BUILD_TIMESTAMP}.zip", 
                                       bucket: "${bucket1}", 
            
                                       force:true)   
                          }
-                         sh "unzip zipFile: 'myapp_${BUILD_TIMESTAMP}${BUILD_NUMBER}.zip', dir: './my_depolyment_job'"
+                         sh "unzip zipFile: 'myapp_${BUILD_TIMESTAMP}.zip', dir: './my_depolyment_job'"
               }   
         }
   }
