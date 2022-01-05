@@ -21,18 +21,7 @@ pipeline {
                                       path:"/var/lib/jenkins/workspace/my_depolyment_job", 
                                       force:true)   
                          }
-                
-                
-            }   
-        }
-  
-          stage("Upload"){
-            steps{
-                withAWS(credentials: "${aws_credential}", region: "${region}"){
-                s3Upload(file:"myapp_${BUILD_TIMESTAMP}.zip", bucket:"${bucket}")
-               
-                  }
-            }
+              }   
         }
     }
   }
