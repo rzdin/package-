@@ -12,11 +12,13 @@ pipeline {
      stages{
           stage ('Copy Build Artifact') {
             steps {
-                sh 'rm -rf *.zip'
-                echo 'Copying artifact from project my-package-jenkins-job'
-                copyArtifacts(projectName: 'my-package-jenkins-job', filter:'*.zip', optional: 'true', fingerprintArtifacts: 'false', selector: specific("${BUILD_TIMSTAMP}"));
-                // OR
-                // copyArtifacts(projectName: 'projectA', filter:'Debug.7z', selector: specific('5'), optional: true);
+                withAWS {
+                          s3Download(
+                                      file:"path/in/your/Jenkins/workspace", 
+                                      bucket: , 
+                path:"$folderPath/", 
+                force:true)
+    }
                 
                 
             }   
