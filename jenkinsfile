@@ -17,9 +17,9 @@ pipeline {
                
     
                 sh "zip 'myapp.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
-                sh " filname = myapp.zip"
-                sh " DATE=`date +%d-%m-%y`"
-                sh " New_filename = ${filname}_${DATE}.zip"
+                echo " filname = myapp.zip"
+                echo " DATE=`date +%d-%m-%y`"
+                echo " New_filename = ${filname}_${DATE}.zip"
               }
   }
        stage("Upload"){
