@@ -16,7 +16,7 @@ pipeline {
             steps {
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           s3Download(
-                                      file:"*.zip", 
+                                      file:"myapp_${BUILD_TIMESTAMP}.zip", 
                                       bucket: "${bucket1}", 
            
                                       force:true)   
