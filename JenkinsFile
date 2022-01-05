@@ -23,5 +23,9 @@ pipeline {
                          }
               }   
         }
+        stage ('unzip') {
+            steps {
+                 sh 'unzip 'myapp_${BUILD_TIMESTAMP}.zip'
+        }
     }
   }
