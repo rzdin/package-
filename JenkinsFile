@@ -12,6 +12,7 @@ pipeline {
      stages{
           stage ('Copy Build Artifact') {
             steps {
+                sh 'rm -rf *.zip'
                 echo 'Copying artifact from project my-package-jenkins-job'
                 copyArtifacts(projectName: 'my-package-jenkins-job', filter:'*.zip', optional: 'true');
                 // OR
