@@ -12,8 +12,8 @@ pipeline {
      stages{
           stage ('Copy Build Artifact') {
             steps {
-                echo 'Copying artifact from projectA'
-                copyArtifacts(projectName: 'projectA', filter:'Debug.7z', optional: true);
+                echo 'Copying artifact from project my-package-jenkins-job'
+                copyArtifacts(projectName: 'my-package-jenkins-job', filter:'*.zip', optional: true);
                 // OR
                 // copyArtifacts(projectName: 'projectA', filter:'Debug.7z', selector: specific('5'), optional: true);
             }
