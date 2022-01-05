@@ -18,7 +18,7 @@ pipeline {
                           s3Download(
                                       file:"*.zip", 
                                       bucket: "${bucket1}", 
-                                      path:"/var/lib/jenkins/workspace/my_depolyment_job/", 
+                                      path:"/var/lib/jenkins/workspace/my_depolyment_job", 
                                       force:true)   
                          }
               }   
