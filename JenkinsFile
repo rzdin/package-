@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh 'rm -rf *.zip'
                 echo 'Copying artifact from project my-package-jenkins-job'
-                copyArtifacts(projectName: 'my-package-jenkins-job', filter:'*.zip', optional: 'true', fingerprintArtifacts: 'false', selector: specific("${built.number}"));
+                copyArtifacts(projectName: 'my-package-jenkins-job', filter:'*.zip', optional: 'true', fingerprintArtifacts: 'false', selector: specific("${BUILD_NUMBER}"));
                 // OR
                 // copyArtifacts(projectName: 'projectA', filter:'Debug.7z', selector: specific('5'), optional: true);
                 
