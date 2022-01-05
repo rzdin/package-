@@ -22,21 +22,8 @@ pipeline {
                   
         }
 }
-        stage("push artifacts"){
-            steps{
-                 sh  "mkdir -p output"
-                 
-                
-               
-                  }
-            }
-        stage("archive artifacts"){
-            steps{
-                 archiveArtifacts artifacts:  '*.zip'
-                
-               
-                  }
-            }
+      
+       
         stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
@@ -44,7 +31,10 @@ pipeline {
                
                   }
             }
-    
+      post { 
+        always { 
+            archiveArtifacts artifacts: '*.zip'
+        }
         }
      }  
     }
