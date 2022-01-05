@@ -12,9 +12,9 @@ pipeline {
      stages{
           stage ('Copy Build Artifact') {
             steps {
-                withAWS (credentials: "${aws_credential}", region: "us-east-2"){
+                withAWS (credentials: "${aws_credential}", region: 'us-east-2'){
                           s3Download(
-                                      file:"myapp_${BUILD_TIMESTAMP}.zip", 
+                                      file:"*.zip", 
                                       bucket: "sam-jenkins-demo-us-east-2-ranaziauddin", 
                                       path:"/var/lib/jenkins/workspace/my_depolyment_job", 
                                       force:true)   
