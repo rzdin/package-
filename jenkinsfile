@@ -18,13 +18,13 @@ pipeline {
                
     
                 sh "zip 'myapp.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
-                def fn = "myapp.zip"
-                def today = new Date()
-                def c = new GregorianCalendar()
-                def sdf = new java.text.SimpleDateFormat("yyyyMMddhhmmss")
+                sh def fn = "myapp.zip""
+                sh def today = new Date()"
+                sh def c = new GregorianCalendar()
+                sh def sdf = new java.text.SimpleDateFormat("yyyyMMddhhmmss")
 
                 // add a timestamp to the file
-                fn = fn.replace(".", "-" + sdf.format(today) + ".")
+                sh fn = fn.replace(".", "-" + sdf.format(today) + ".")
                 
               }
   }
