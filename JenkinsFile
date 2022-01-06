@@ -18,7 +18,7 @@ pipeline {
                     sh 'rm -rf *.zip'
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           sh "aws s3 ls"
-                          sh "aws s3 $bucket1 --recursive | sort | tail -n 1 | awk '{print $myapp*.zip}'"
+                          sh "aws s3 $bucket1 --recursive | sort | tail -n 1 | awk '{print ${4}}'"
                          }
                          
               }   
