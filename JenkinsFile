@@ -19,7 +19,7 @@ pipeline {
                     sh 'rm -rf *.zip'
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           
-                         sh "aws s3api get-object --bucket ${bucket1} --key 1.1.0/*.zip"
+                         sh "aws sync s3://${bucket1}/1.1.0/*.zip /var/lib/jenkins/workspace/my_depolyment_job"
                          }
                          
               }   
