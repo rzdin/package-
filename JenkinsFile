@@ -23,7 +23,7 @@ pipeline {
            
                                       force:true)   
                          }
-                         sh "unzip 'myapp_${BUILD_TIMESTAMP}_.zip', dir: '/var/lib/jenkins/workspace/my_depolyment_job'"
+                         sh "unzip 'myapp_${BUILD_TIMESTAMP}_.zip', dir: '/var/lib/jenkins/workspace/my_depolyment_job/'"
               }   
         }
   }
