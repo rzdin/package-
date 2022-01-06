@@ -15,7 +15,7 @@ pipeline {
      stages{
           stage ('Copy Build Artifact') {
             steps {
-                    sh 'rm -rf *.zip'
+                   
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           
                          sh "aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/*.zip  /var/lib/jenkins/workspace/my_depolyment_job/ --recursive"
