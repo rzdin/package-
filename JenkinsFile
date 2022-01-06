@@ -8,6 +8,7 @@ pipeline {
         region1 = "us-east-2"
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
+        STRING= ${env.TAG_NAME_DEV}
        
        
     }
@@ -23,7 +24,7 @@ pipeline {
            
                                       force:true)   
                          }
-                         sh "unzip 'myapp*_.zip', dir: '/var/lib/jenkins/workspace/my_depolyment_job/'"
+                         
               }   
         }
   }
