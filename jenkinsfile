@@ -16,16 +16,14 @@ pipeline {
                
                
     
-                sh "zip 'myapp.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
-                echo " filname = myapp.zip"
-                echo " DATE=`date +%d-%m-%y`"
-                echo " New_filename = ${filname}_${DATE}.zip"
+                sh "zip 'myapp_${TimeStamp}.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
+                
               }
   }
        stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
-                s3Upload(file:"${New_filename}.zip", bucket:"${bucket}")
+                s3Upload(file:"*.zip", bucket:"${bucket}")
                
                   }
             }
