@@ -19,7 +19,7 @@ pipeline {
                     sh 'rm -rf *.zip'
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           
-                         sh "aws s3api get-object /var/lib/jenkins/workspace/my_depolyment_job --bucket ${bucket1} --include '*.zip'"
+                         sh "aws s3 cp s3://${bucket1}/1.1.0/*.zip"
                          }
                          
               }   
