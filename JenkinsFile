@@ -18,7 +18,7 @@ pipeline {
                     sh 'rm -rf *.zip'
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           s3Download(
-                                      file:"myapp*.zip", 
+                                      file:"myapp_*.zip", 
                                       bucket: "${bucket1}", 
                                       
            
