@@ -18,7 +18,7 @@ pipeline {
                    
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           
-                         sh "aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/*.zip   /workspace/my_deployment_job/ --recursive"
+                         sh "aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/*.zip   **/workspace/my_deployment_job/* --recursive"
                          }
                          
               }   
