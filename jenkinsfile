@@ -18,7 +18,7 @@ pipeline {
                
     
                 sh "zip 'myapp.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
-                sh def fn = "myapp.zip""
+                sh def fn = "myapp.zip"
                 sh def today = new Date()"
                 sh def c = new GregorianCalendar()
                 sh def sdf = new java.text.SimpleDateFormat("yyyyMMddhhmmss")
