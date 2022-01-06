@@ -17,21 +17,15 @@ pipeline {
                
                
     
-                sh "zip 'myapp.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
-                sh def fn = "myapp.zip"
-                sh def today = new Date()"
-                sh def c = new GregorianCalendar()
-                sh def sdf = new java.text.SimpleDateFormat("yyyyMMddhhmmss")
-
-                // add a timestamp to the file
-                sh fn = fn.replace(".", "-" + sdf.format(today) + ".")
+                sh "zip 'myapp_${TIMESTAMP}.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
+             
                 
               }
   }
        stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
-                s3Upload(file:"myapp_${NOW}.zip", bucket:"${bucket}")
+                s3Upload(file:"myapp_${TIMESTAMP}.zip", bucket:"${bucket}")
                
                   }
             }
