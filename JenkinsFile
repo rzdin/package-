@@ -22,7 +22,7 @@ pipeline {
            
                                       force:true)   
                          }
-                         sh "unzip zipFile: 'myapp_${BUILD_TIMESTAMP}_.zip', dir: './my_depolyment_job'"
+                         sh "unzip zipFile: 'myapp_${BUILD_TIMESTAMP}_.zip'"
               }   
         }
   }
