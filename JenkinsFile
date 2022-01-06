@@ -9,6 +9,7 @@ pipeline {
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
         STRING= "${env.TAG_NAME_DEV}"
+        
        
        
     }
@@ -18,7 +19,7 @@ pipeline {
                     sh 'rm -rf *.zip'
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           
-                         sh  "aws s3 cp /var/lib/jenkins/workspace/my_depolyment_job s3://${bucket1/ --recursive  --exclude "*" --include "*.zip"" 
+                         sh "aws s3 cp /var/lib/jenkins/workspace/my_depolyment_job s3://${bucket}/ --recursive --exclude "*" --include "*.zip""
                          }
                          
               }   
