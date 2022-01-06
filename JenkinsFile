@@ -18,7 +18,7 @@ pipeline {
                    
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           
-                         sh "aws sync cp s3://${bucket1}/${TAG_NAME_DEV}  /var/lib/jenkins/workspace/my_depolyment_job  --include *.zip"
+                         sh "aws sync cp s3://${bucket1}/${TAG_NAME_DEV}  /var/lib/jenkins/workspace/my_depolyment_job"
                          }
                          
               }   
