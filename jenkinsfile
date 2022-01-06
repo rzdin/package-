@@ -5,7 +5,7 @@ pipeline {
         region = "us-east-2"
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
-        NOW = "${date '+%F_%H:%M:%S'}"
+       
        
     }
      stages{
@@ -17,7 +17,14 @@ pipeline {
                
                
     
-                sh "zip 'myapp_${NOW}.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
+                sh "zip 'myapp.zip' db jenkinsfile  model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
+                def fn = "myapp.zip"
+                def today = new Date()
+                def c = new GregorianCalendar()
+                def sdf = new java.text.SimpleDateFormat("yyyyMMddhhmmss")
+
+                // add a timestamp to the file
+                fn = fn.replace(".", "-" + sdf.format(today) + ".")
                 
               }
   }
