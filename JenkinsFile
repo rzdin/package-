@@ -18,7 +18,7 @@ pipeline {
                     sh 'rm -rf *.zip'
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
                           
-                         sh  "aws s3 cp /var/lib/jenkins/workspace/my_depolyment_job s3://${bucket1/ --recursive \ --exclude "*" --include "*.zip"" 
+                         sh  "aws s3 cp /var/lib/jenkins/workspace/my_depolyment_job s3://${bucket1/ --recursive  --exclude "*" --include "*.zip"" 
                          }
                          
               }   
