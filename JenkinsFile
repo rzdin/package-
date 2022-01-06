@@ -17,12 +17,7 @@ pipeline {
             steps {
                     sh 'rm -rf *.zip'
                 withAWS (credentials: "${aws_credential}", region:"${region1}" ){
-                          s3Download(
-                                      file:"1.1.0/myapp_*.zip", 
-                                      bucket: "${bucket1}", 
-                                      
-           
-                                      force:true)   
+                          sh "aws s3 ls"
                          }
                          
               }   
