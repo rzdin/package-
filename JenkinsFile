@@ -32,7 +32,7 @@ pipeline {
                                 path = "$bucket1/$TAG_NAME_DEV/"
                                 }
                                 
-                            aws s3 cp $path  
+                            aws s3 cp s3://$path  
                         """
                         }
                     
