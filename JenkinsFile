@@ -25,7 +25,7 @@ pipeline {
         }
          stage("Upload"){
             steps{
-                 sh "unzip '*_${TAG_NAME_DEV}.zip'" 
+                 sh "unzip '*_${TAG_NAME_DEV}.zip',  dir: '/var/lib/jenkins/workspace/my_deployment_job/'" 
                
                   }
             }    
