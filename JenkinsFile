@@ -32,7 +32,7 @@ pipeline {
                                 
                                 }
                                 
-                            aws s3 cp s3://$filename .  
+                            aws s3 cp s3://$files .  
                         """
                         }
                     
