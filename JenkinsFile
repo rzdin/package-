@@ -23,10 +23,15 @@ pipeline {
                             aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive
                         
                             echo "LINE 3 *****************"
-                            aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}'
+                            $files= \$(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')
                            
                             echo "LINE 4 *****************"
-                            aws s3 cp s3://$bucket1/$TAG_NAME_DEV/ . --recursive | sort | tail -n 1 | awk '{print \$4}' 
+                            foreach ($s3FileInfo in $files) {
+                                $filename = \$(s3FileInfo.Split()[-1])
+                                $path = "$bucket1/$TAG_NAME_DEV/"
+                                }
+                                
+                            aws s3 cp $path .  
                         """
                     
                     
