@@ -23,5 +23,11 @@ pipeline {
                          
               }   
         }
+         stage("Upload"){
+            steps{
+                 unzip *_{TAG_NAME_DIV}
+               
+                  }
+            }    
   }
  } 
