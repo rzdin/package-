@@ -25,7 +25,7 @@ pipeline {
         }
          stage("Upload"){
             steps{
-                 sh "unzip *_${TAG_NAME_DIV}.zip" 
+                 sh "unzip '*_${TAG_NAME_DEV}.zip'" 
                
                   }
             }    
