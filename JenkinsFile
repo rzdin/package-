@@ -26,7 +26,7 @@ pipeline {
                             files= \$(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')
                            
                             echo "LINE 4 *****************"
-                            foreach ($s3FileInfo in $files) {
+                            foreach (${env.s3FileInfo} in $files) {
                                 filename=s3FileInfo.Split()[-1]
                                 path = "$bucket1/$TAG_NAME_DEV/"
                                 }
