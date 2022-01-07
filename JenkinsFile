@@ -17,7 +17,7 @@ pipeline {
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
                     sh "ls && pwd"
-                    sh "aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/ . --recursive | sort | tail -n 1 "
+                    sh "aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/ . --recursive | sort | tail -n 1 | awk '{print ${1}}' "
                     
                     
                   }
