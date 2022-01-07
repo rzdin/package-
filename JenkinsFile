@@ -16,10 +16,14 @@ pipeline {
           stage ('Copy Build Artifact') {
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
-                    sh "ls && pwd"
-                    sh "aws s3 ls ${bucket1}/${TAG_NAME_DEV}/ --recursive | sort"
+                        sh """
+                            ls && pwd
+                            aws s3 ls s3://${bucket1}/${TAG_NAME_DEV}/ . --recursive
+                        
+                            aws s3 ls s3://${bucket1}/${TAG_NAME_DEV}/ . --recursive | sort | tail -n 1 | awk '{print ${4}}'
 
-                    sh "aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/ . --recursive | sort | tail -n -1 | awk '{print ${4}}' "
+                            aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/ . --recursive | sort | tail -n 1 | awk '{print ${4}}' 
+                        """
                     
                     
                   }
