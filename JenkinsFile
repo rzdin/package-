@@ -17,6 +17,7 @@ pipeline {
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
                     sh "ls && pwd"
+               bash '''
                     #!/bin/bash
                     $s3location = "s3://{$bucket}/${TAG_NAME_DEV}/"
                     $files = $(aws s3 ls ${bucket1}/${TAG_NAME_DEV}/ --recursive | sort | select -last 1)
