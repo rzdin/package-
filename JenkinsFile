@@ -17,7 +17,7 @@ pipeline {
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
                     sh "ls && pwd"
-                    sh  "KEY=`aws s3 ls ${bucket1}/${TAG_NAME_DEV}/ --recursive | sort | tail -n 1 | awk '{print ${4}}'  aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/$KEY ."
+                    sh  aws s3 ls ${bucket1}/${TAG_NAME_DEV} --recursive | sort |
                     
                     
                   }
@@ -25,11 +25,6 @@ pipeline {
                          
               }   
         }
-         stage("Upload"){
-            steps{
-                 sh "unzip '*_${TAG_NAME_DEV}.zip'" 
-               
-                  }
-            }    
+            
   }
  } 
