@@ -27,7 +27,7 @@ pipeline {
                         $filename = $s3FileInfo.Split()[-1]
                         $path = "${s3location}/${TAG_NAME_DEV}/"
                         aws s3 cp $path .
-                        echo("Done downloading ${path} to ${dlPath}")
+                        echo("Done downloading")
 }
          '''
 }
