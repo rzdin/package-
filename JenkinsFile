@@ -19,7 +19,7 @@ pipeline {
                     sh "ls && pwd"
                     sh "aws s3 ls ${bucket1}/${TAG_NAME_DEV}/ --recursive | sort"
 
-                    sh "aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/ . --recursive | sort | tail 1 | awk '{print ${3}}' "
+                    sh "aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/ . --recursive | sort | tail -1 | awk '{print ${3}}' "
                     
                     
                   }
