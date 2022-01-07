@@ -16,7 +16,8 @@ pipeline {
           stage ('Copy Build Artifact') {
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
-                        sh """
+                       script{ 
+                            sh """
                             echo "LINE 1 *****************"
                             ls && pwd
                             echo "LINE 2 *****************"
@@ -33,6 +34,7 @@ pipeline {
                                 
                             aws s3 cp $path  
                         """
+                        }
                     
                     
                   }
