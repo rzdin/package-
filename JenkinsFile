@@ -15,11 +15,11 @@ pipeline {
      stages{
           stage ('Copy Build Artifact') {
             steps {
-                   
-                withAWS (credentials: "${aws_credential}", region:"${region1}" ){
-                          
-                         sh "aws s3 cp s3://${bucket1}/${TAG_NAME_DEV}/   /var/lib/jenkins/workspace/my_deployment_job/ --recursive"
-                         }
+                    withAWS(credentials: "${aws_credential}", region: "${region1}"){
+                s3Download(file:"*_${TAG_NAME_DEV}.zip", bucket:"${bucket1}")
+               
+                  }
+              
                          
               }   
         }
