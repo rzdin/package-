@@ -17,7 +17,7 @@ pipeline {
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
                     sh "ls && pwd"
-                    sh  aws s3 ls ${bucket1}/${TAG_NAME_DEV} --recursive | sort |
+                    sh  aws s3 ls ${bucket1} --recursive | sort |
                     
                     
                   }
