@@ -17,7 +17,19 @@ pipeline {
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
                     sh "ls && pwd"
-                    sh  "aws s3 ls ${bucket1}/${TAG_NAME_DEV}/  --query "sort_by(Contents, LastModified)[*].{Key:Key,Size:Size,LastModified:LastModified} "
+                    #!/bin/bash
+                    $s3location = "s3://{$bucket}/${TAG_NAME_DEV}/"
+                    $files = $(aws s3 ls ${bucket1}/${TAG_NAME_DEV}/ --recursive | sort | select -last 1)
+                   
+
+                   foreach ($s3FileInfo in $files) {
+                        $filename = $s3FileInfo.Split()[-1]
+                        $path = "${s3location}/${TAG_NAME_DEV}/"
+                        aws s3 cp $path .
+                        echo("Done downloading ${path} to ${dlPath}")
+}
+         '''
+}
                     
                     
                   }
