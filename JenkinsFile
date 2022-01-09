@@ -28,7 +28,7 @@ pipeline {
                            
                             echo "LINE 4 *****************"
                       
-                            aws s3 cp s3://${env.files} . --recursive | sort | tail -n 1 | awk '{print \$4}
+                            aws s3 cp s3://${env.files} . 
                                 
                            
                         """
