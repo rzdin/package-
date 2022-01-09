@@ -17,7 +17,10 @@ pipeline {
           stage ('Copy Build Artifact') {
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
-                       
+                           script{
+                                env.Files=\$(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')
+                           }
+                           
                             sh """
                             echo "LINE 1 *****************"
                             ls && pwd
@@ -26,7 +29,7 @@ pipeline {
                         
                             echo "LINE 3 *****************"
                             
-                            env.Files=\$(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')
+                            aws s3 cp s3://$bucket1/$env.Files .
                            
                             echo "LINE 4 *****************"
                       
