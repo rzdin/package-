@@ -24,11 +24,11 @@ pipeline {
                             aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive
                         
                             echo "LINE 3 *****************"
-                            env.files=\$(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')
+                            env.FILES=(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}'}
                            
                             echo "LINE 4 *****************"
                       
-                            aws s3 cp s3://${env.files} . 
+                            aws s3 cp s3://${env.FILES} . 
                                 
                            
                         """
