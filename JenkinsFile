@@ -8,7 +8,7 @@ pipeline {
         region1 = "us-east-2"
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
         application_name = "Nodejs"
-        Files = "files"
+        
         
        
        
@@ -26,7 +26,7 @@ pipeline {
                         
                             echo "LINE 3 *****************"
                             
-                            $env.Files= \$(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')
+                            \$env.Files= \$(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')
                            
                             echo "LINE 4 *****************"
                       
