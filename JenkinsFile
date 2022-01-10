@@ -60,10 +60,8 @@ pipeline {
                       
                        s3Upload(file:"file_extracted_*", bucket:"${bucket}/${TAG_NAME_DEV}")
                     
-                    
-                    }
-          
-        }
+             }
+         }
      }
    post { 
         always { 
@@ -71,6 +69,6 @@ pipeline {
                 rm -r file_extracted_$TAG_NAME_DEV
            """
         }  
-  }
-  }
+      }
+    }
   }
