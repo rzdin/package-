@@ -50,7 +50,8 @@ pipeline {
      }
          stage('uploading'){
             steps{
-                    withAWS(credentials: "${aws_credential}", region: "${region1}"){
+                    withAWS(credentials: "${aws_credential}", region: "${region}"){
+                    s3Upload(file:"*_${TAG_NAME_DEV}", bucket:"${bucket}/${TAG_NAME_DEV}")
                     
                     }
           
