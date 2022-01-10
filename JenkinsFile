@@ -40,8 +40,13 @@ pipeline {
                   }
               
                          
-              }   
+              } 
+         stage('unzipfile'){
+            steps{
+                  sh "unzip '*_zip'
+            }
         }
             
+  }
   }
   
