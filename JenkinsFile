@@ -31,7 +31,7 @@ pipeline {
                             echo "LINE 4 *****************"
                             echo $file_NAME
                       
-                            aws s3 cp s3://$bucket1/$env.FILES  . 
+                            aws s3 cp s3://$bucket1/$file_NAME  . 
                            
                         '''
                         }
