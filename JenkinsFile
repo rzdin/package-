@@ -58,7 +58,7 @@ pipeline {
             steps{
                     withAWS(credentials: "${aws_credential}", region: "${region}"){
                       
-                       s3Upload(file:"file_extracted_*", bucket:"${bucket}/${TAG_NAME_DEV}")
+                       s3Upload(file:"file_extracted_$TAG_NAME_DEV", bucket:"${bucket}/${TAG_NAME_DEV}")
                     
              }
          }
