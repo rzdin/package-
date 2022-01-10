@@ -44,7 +44,7 @@ pipeline {
               } 
          stage('unzipfile'){
             steps{
-                    sh "-o unzip '*_${TAG_NAME_DEV}.zip'"
+                    sh "unzip '*_${TAG_NAME_DEV}.zip'"
           
         }
      }
