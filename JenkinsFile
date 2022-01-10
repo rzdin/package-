@@ -44,8 +44,11 @@ pipeline {
               } 
          stage('unzipfile'){
             steps{
-                    sh "FILENAME=(unzip -o '*_${TAG_NAME_DEV}.zip')"
-                    echo $FILENAME
+                    sh """
+                    mkdir file_extracted
+                    unzip -o '*_${TAG_NAME_DEV}.zip' -d file_extracted
+                    
+                    
           
         }
      }
@@ -53,7 +56,7 @@ pipeline {
             steps{
                     withAWS(credentials: "${aws_credential}", region: "${region}"){
                         sh'''#!/bin/bash 
-                             s3Upload(file:"$FILENAME", bucket:"${bucket}/${TAG_NAME_DEV}")
+                             s3Upload(file:"file_extracted", bucket:"${bucket}/${TAG_NAME_DEV}")
                     '''
                     
                     }
