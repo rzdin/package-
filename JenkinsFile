@@ -45,6 +45,7 @@ pipeline {
          stage('unzipfile'){
             steps{
                     sh "FILENAME=(unzip -o '*_${TAG_NAME_DEV}.zip')"
+                    echo $FILENAME
           
         }
      }
