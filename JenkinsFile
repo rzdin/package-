@@ -48,6 +48,14 @@ pipeline {
           
         }
      }
+         stage('uploading'){
+            steps{
+                    withAWS(credentials: "${aws_credential}", region: "${region1}"){
+                    
+                    }
+          
+        }
+     }
   }
   }
   
