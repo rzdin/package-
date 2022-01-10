@@ -45,9 +45,8 @@ pipeline {
             steps{
                   sh "unzip '*_$TAG_NAME_DEV.zip" .
             }
-          }
+          
         }
-            
-  }
+     }
   }
   
