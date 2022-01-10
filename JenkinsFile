@@ -45,7 +45,7 @@ pipeline {
          stage('unzipfile'){
             steps{
                     sh """
-                    rm -r file_extracted_$TAG_NAME_DEV
+                    
                     mkdir file_extracted_$TAG_NAME_DEV
                     unzip -o '*_${TAG_NAME_DEV}.zip' -d file_extracted_$TAG_NAME_DEV
                     """
@@ -65,6 +65,11 @@ pipeline {
           
         }
      }
+   post { 
+        always { 
+           sh """
+                rm -r file_extracted_$TAG_NAME_DEV
+        }  
   }
   }
   
