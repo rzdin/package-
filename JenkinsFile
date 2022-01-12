@@ -14,20 +14,6 @@ pipeline {
        
     }
      stages{
-            stage('Setup parameters') {
-            steps {
-                script { 
-                    properties([
-                        parameters([
-                            choice(
-                                choices: ['ONE', 'TWO'], 
-                                name: 'PARAMETER_01'
-                            ),
-                           ])
-                        ])
-                    }
-                }
-            }
           stage ('Copy Build Artifact') {
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
