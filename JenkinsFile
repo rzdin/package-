@@ -48,7 +48,7 @@ pipeline {
                     sh """
                     mkdir ALL_ARTIFACTS
                     LIST_OF_ALL_ARTIFATCTS=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | awk '{print \$4}')`
-                    aws s3 cp s3://$bucket1/$LIST_OF_ALL_ARTIFATCTS  ALL_ARTIFACTS
+                    aws s3 cp s3://$bucket1/$LIST_OF_ALL_ARTIFATCTS .
                     
                     
                     
