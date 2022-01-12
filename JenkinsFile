@@ -26,7 +26,7 @@ pipeline {
                             aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive
                             PREV_ARTIFACTS_FILE=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | awk '{print \$4}')`
                             mkdir All_artifacts
-                            aws s3 cp s3://$bucket1/$PREV_ARTIFACTS_FILE,  dir: 'All_artifacts'
+                            aws s3 cp s3://$bucket1/$PREV_ARTIFACTS_FILE, to dir: 'All_artifacts'
                             
                             echo "LINE 3 *****************"
                             file_NAME=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')`
