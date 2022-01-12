@@ -26,7 +26,8 @@ pipeline {
                             aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive
                             PREV_ARTIFACTS_FILE=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | awk '{print \$4}')`
                             mkdir ALL_FILES_IN_BUCKET
-                            aws s3 cp s3://$bucket1/$PREV_ARTIFACTS_FILE dir: '*/ALL_FILES_IN_BUCKET'  
+                            aws s3 cp s3://$bucket1/$PREV_ARTIFACTS_FILE .
+                            '*_${TAG_NAME_DEV}.zip' -d ALL_FILES_IN_BUCKET
                             
                             echo "LINE 3 *****************"
                             file_NAME=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')`
