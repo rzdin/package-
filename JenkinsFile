@@ -60,7 +60,7 @@ pipeline {
          stage('uploading'){
             steps{
                     withAWS(credentials: "${aws_credential}", region: "${region}"){
-                      
+                     
                        s3Upload(file:"file_extracted_$TAG_NAME_DEV", bucket:"${bucket}/${TAG_NAME_DEV}")
                     
              }
@@ -70,6 +70,7 @@ pipeline {
         always { 
            sh """
                 rm -r file_extracted_$TAG_NAME_DEV
+                rm -r All_artifacts
            """
         }  
       }
