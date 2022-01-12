@@ -25,11 +25,7 @@ pipeline {
                             ls && pwd
                             echo "LINE 2 *****************"
                             aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive
-                            PREV_ARTIFACTS_FILE=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | awk '{print \$4}')`
-                            mkdir ALL_FILES_IN_BUCKET
-                            COPIED_FILES=`(aws s3 cp s3://$bucket1/$PREV_ARTIFACTS_FILE .)`
-                            mv $COPIED_FILES  ALL_FILES_IN_BUCKET
-                            
+                      
                             echo "LINE 3 *****************"
                             file_NAME=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')`
                            
@@ -47,6 +43,22 @@ pipeline {
               
                          
               } 
+         stage('Revert Deployment'){
+            steps{
+                    sh """
+                    mkdir ALL_ARTIFACTS
+                    LIST_OF_ALL_ARTIFATCTS=`aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | awk '{print \$4}'`
+                    aws s3 cp s3://$bucket1/$LIST_OF_ALL_ARTIFATCTS  ALL_ARTIFACTS
+                    
+                    
+                    
+                    
+                    """
+                    
+                    
+          
+        }
+     }     
          stage('unzipfile'){
             steps{
                     sh """
