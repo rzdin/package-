@@ -97,7 +97,7 @@ pipeline {
                         FILENAME=file
                         cd ALL_ARTIFACTS
                         ls -1 && pwd
-                        for f in ALL_ARTIFACTS;
+                        for f in ALL_ARTIFACTS/*;
                         do
                              if [$file ==  $f]
                              then
