@@ -95,11 +95,12 @@ pipeline {
                         
                         echo "********LINE 1********"
                         FILES="/var/lib/jenkins/workspace/my_depolyment_job/ALL_ARTIFACTS/*"
-                        for f in $FILES
+                        for f in $FILES;
                         do
                              if ["$FILNAME" == "$f"]
                                 echo $f
                              # take action on each file. $f store current file name
+                             fi
                             
                         done
 
