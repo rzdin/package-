@@ -18,6 +18,12 @@ pipeline {
     }
      stages{
           stage ('Copy Build Artifact') {
+           when {
+                
+                expression { params.TAG_NAME_DEV
+                             params.BRANCH_NAME
+                }
+            }
             steps {
                     withAWS(credentials: "${aws_credential}", region: "${region1}"){
                            
@@ -49,6 +55,12 @@ pipeline {
               } 
               
          stage('unzipfile'){
+         when {
+                
+                expression { params.TAG_NAME_DEV
+                             params.BRANCH_NAME
+                }
+            }
             steps{
                     sh """
                     
@@ -86,6 +98,12 @@ pipeline {
         }
      }
          stage('uploading'){
+         when {
+                
+                expression { params.TAG_NAME_DEV
+                             params.BRANCH_NAME
+                }
+            }
             steps{
                     withAWS(credentials: "${aws_credential}", region: "${region}"){
                      
