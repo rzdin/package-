@@ -97,8 +97,8 @@ pipeline {
                         
                         cd ALL_ARTIFACTS
                         ls -1 && pwd
-                        find -iname '$FILENAME' 
-                        echo $FILNAME 
+                        FILE_NAME=`(find -iname '$FILENAME')` 
+                        echo $FILE_NAME 
                        
 
                          
