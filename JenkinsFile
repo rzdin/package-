@@ -75,7 +75,7 @@ pipeline {
         stage('Revert deployement'){
             when {
                 
-                expression { params.FILENAME && params.BRANCH_NAME
+                expression { params.$FILENAME && params.$BRANCH_NAME
                 }
             }
             steps{
