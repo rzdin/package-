@@ -90,6 +90,7 @@ pipeline {
                         aws s3 ls s3://$bucket1/1.1.0/  --recursive
                         ALL_ARTIFACTS=`(aws s3 ls s3://$bucket1/1.1.0/  --recursive | sort )`
                         echo $ALL_ARTIFACTS
+                        cd ALL_ARTIFACTS
                         aws s3 cp s3://$bucket1/$ALL_ARTIFACTS .
                          
                       
