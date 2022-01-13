@@ -78,7 +78,7 @@ pipeline {
                     '''
                     
                     
-          
+          }
         }
      }
          stage('uploading'){
@@ -101,6 +101,6 @@ pipeline {
     }
   }
 }
-}
+
 
 
