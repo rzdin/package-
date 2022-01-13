@@ -20,8 +20,7 @@ pipeline {
           stage ('Copy Build Artifact') {
            when {
                 
-                expression { params.TAG_NAME_DEV
-                             params.BRANCH_NAME
+                expression { params.TAG_NAME_DEV || params.BRANCH_NAME
                 }
             }
             steps {
@@ -57,8 +56,7 @@ pipeline {
          stage('unzipfile'){
          when {
                 
-                expression { params.TAG_NAME_DEV
-                             params.BRANCH_NAME
+                expression { params.TAG_NAME_DEV || params.BRANCH_NAME
                 }
             }
             steps{
@@ -76,8 +74,7 @@ pipeline {
         stage('Revert deployement'){
             when {
                 
-                expression { params.FILENAME
-                             params.BRANCH_NAME
+                expression { params.FILENAME || params.BRANCH_NAME
                 }
             }
             steps{
@@ -102,8 +99,7 @@ pipeline {
         stage('uploading'){
             when {
                 
-                expression { params.TAG_NAME_DEV
-                             params.BRANCH_NAME
+                expression { params.TAG_NAME_DEV || params.BRANCH_NAME
                 }
             }
             steps{
