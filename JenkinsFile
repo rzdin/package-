@@ -25,11 +25,10 @@ pipeline {
                             ls && pwd
                             echo "LINE 2 *****************"
                             aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive
-                            mkdir ALL_ARTIFACTS
+                        
                             LIST_OF_ALL_ARTIFATCTS=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | awk '{print \$4}')`
-                            aws s3 cp s3://$bucket1/$LIST_OF_ALL_ARTIFATCTS .
-                            cd ALL_ARTIFACTS 
-                            ls 
+                            aws s3 cp s3://$bucket1/$LIST_OF_ALL_ARTIFATCTS, dir:  ALL_ARTIFACTS
+                           
                             
                       
                             echo "LINE 3 *****************"
