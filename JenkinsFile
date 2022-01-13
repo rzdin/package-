@@ -97,7 +97,12 @@ pipeline {
                         
                         cd ALL_ARTIFACTS
                         ls -1 && pwd
-                        for FILE in *; do echo $FILE; done
+                        for FILE in *; do 
+                            if[$FILENAME == $FILE]
+                            then
+                               echo "FILE EXITS";
+                            fi   
+                        done
                             
                        
 
