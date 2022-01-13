@@ -92,6 +92,8 @@ pipeline {
                         echo $ALL_ARTIFACTS
                         
                         aws s3 cp s3://$bucket1/1.1.0/  ALL_ARTIFACTS --recursive
+                        for FILE in /ALL_ARTIFACTS/*.zip; do echo $FILE; done
+
                          
                       
                     
