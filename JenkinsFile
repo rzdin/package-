@@ -102,7 +102,7 @@ pipeline {
                             if [ $FILENAME == $FILE ]
                             then
                                echo $FILE
-                               unzip -o '$FILE' -d revert_deployment 
+                            unzip -o '$FILE' -d revert_deployment 
                             else 
                                echo "NOT FOUND"
                             fi   
