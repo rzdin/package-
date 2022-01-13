@@ -95,7 +95,7 @@ pipeline {
                         
                         echo "********LINE 1********"
                         FILES="*/ALL_ARTIFACTS/*"
-                        for f in $FILES
+                        for f in $FILES;
                         do
                              if [$FILENAME ==  $f]
                              then
