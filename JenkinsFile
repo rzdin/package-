@@ -100,7 +100,7 @@ pipeline {
                         for FILE in *; do 
                             if[$FILENAME == $FILE]
                             then
-                               echo "FILE EXITS";
+                               echo "FILE EXITS"
                             fi   
                         done
                             
