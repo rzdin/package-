@@ -61,20 +61,24 @@ pipeline {
         stage('Revert deployement'){
             when {
                 
-                expression { params.Revert_Deployement == '' }
+                expression { params.Revert_Deployement == "" }
             }
             steps{
                 
                  withAWS(credentials: "${aws_credential}", region: "${region1}"){
                    sh'''#!/bin/bash
                     
-                    aws s3 ls s3://$bucket1/1.1.0/  --recursive
-                    ALL_ARTIFACTS=`(aws s3 ls s3://$bucket1/1.1.0/  --recursive | sort | awk '{print \$4}')`
-                    aws s3 cp s3://$bucket1/$ALL_ARTIFACTS  . 
-                    if [$env.Revert_Deployment -eq $ALL_ARTIFACTS]
-                    then
-                       echo 'condition is true 
-                    fi   
+                        aws s3 ls s3://$bucket1/1.1.0/  --recursive
+                        ALL_ARTIFACTS=`(aws s3 ls s3://$bucket1/1.1.0/  --recursive | sort | awk '{print \$4}')`
+                        aws s3 cp s3://$bucket1/$ALL_ARTIFACTS  . 
+                        for file in `ls -l  . | tr -s ' ' | sed '1d' | cut -d' ' -f 9`
+                        do
+                            var=`expr index "$Revert_Deployement" $file`
+                            if [ $var -gt 0 ]
+                            then
+                            echo "$file"
+                        fi
+                        done  
                       
                     
                     
