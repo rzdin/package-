@@ -1,9 +1,7 @@
 
 pipeline {
     agent any
-    parameters {
-        string(name: 'FILENAME', description: 'Please tell me about a file?')
-        }
+   
     environment {
         bucket = "sam-jenkins-demo-us-west-2-rana-ziauddin"
         bucket1 = "sam-jenkins-demo-us-east-2-ranaziauddin"
