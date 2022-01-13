@@ -97,8 +97,11 @@ pipeline {
                         
                         cd ALL_ARTIFACTS
                         ls -1 && pwd
-                        FILE_NAME=`(find -iname '$FILENAME')` 
-                        echo $FILE_NAME 
+                        for file in ALL_ARTIFACTS; do
+                        if [$FILENAME == $file]
+                        then 
+                            echo $file
+                        done
                        
 
                          
