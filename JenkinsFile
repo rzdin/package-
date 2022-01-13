@@ -94,8 +94,8 @@ pipeline {
                         aws s3 cp s3://$bucket1/1.1.0/  ALL_ARTIFACTS --recursive
                         
                         echo "********LINE 1********"
-                        
-                        for f in $ALL_ARTIFACTS;
+                        FILE = /var/lib/jenkins/workspace/my_depolyment_job/ALL_ARTIFACTS/*
+                        for f in $FILE;
                         do
                              if [$FILENAME ==  $f]
                              then
