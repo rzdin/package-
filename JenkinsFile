@@ -95,7 +95,7 @@ pipeline {
                         
                         echo "********LINE 1********"
                         
-                       
+                        cd ALL_ARTIFACTS
                         ls -1 && pwd
                         for file in /ALL_ARTIFACTS/*; do
                             if ["$FILENAME" == "$file"]
