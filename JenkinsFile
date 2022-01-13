@@ -76,7 +76,7 @@ pipeline {
         stage('Revert deployement'){
             when {
                 
-                expression { params.FILENAME == "" }
+                expression { params.FILENAME}
             }
             steps{
                 
