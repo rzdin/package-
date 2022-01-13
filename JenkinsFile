@@ -97,7 +97,8 @@ pipeline {
                         FILES="/var/lib/jenkins/workspace/my_depolyment_job/ALL_ARTIFACTS/*"
                         for f in $FILES
                         do
-                             echo "Processing $f file..."
+                             if ["$FILNAME" == "$f"]
+                                echo $f
                              # take action on each file. $f store current file name
                             
                         done
