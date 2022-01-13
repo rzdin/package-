@@ -97,9 +97,9 @@ pipeline {
                         FILES="/var/lib/jenkins/workspace/my_depolyment_job/ALL_ARTIFACTS/"
                         for f in $FILES;
                         do
-                             if ["$FILNAME" -eq  "$f"]
+                             if ["$FILENAME" -eq  "$f"]
                              then
-                                echo $FILNAME
+                                echo $f
                              # take action on each file. $f store current file name
                              fi
                             
