@@ -72,7 +72,7 @@ pipeline {
         }
      }
            
-        stage('Revert deployement'){
+       stage('Revert deployement'){
             when {
                 
                 expression { params.FILENAME && params.BRANCH_NAME
@@ -101,7 +101,7 @@ pipeline {
           }
         }
      }
-        stage('uploading'){
+      stage('uploading'){
             when {
                 
                 expression { params.TAG_NAME_DEV && params.BRANCH_NAME
