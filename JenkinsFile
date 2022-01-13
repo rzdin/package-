@@ -100,7 +100,7 @@ pipeline {
                              if ["$FILENAME" ==  "$f"]
                              then
                                 echo $f
-                             # take action on each file. $f store current file name
+                            
                              fi
                             
                         done
