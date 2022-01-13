@@ -115,7 +115,7 @@ pipeline {
              }
          }
      
-  post{ 
+ post{ 
        always { 
            sh """
                 rm -r file_extracted_$TAG_NAME_DEV
@@ -126,7 +126,7 @@ pipeline {
     }
   }
 } 
-}
+
 
  
  
