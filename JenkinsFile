@@ -26,11 +26,6 @@ pipeline {
                             echo "LINE 2 *****************"
                             aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive
                             
-                          
-                            LIST_OF_ALL_ARTIFACTS=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | awk '{print \$4}')`
-                            aws s3 cp s3://$bucket1/$LIST_OF_ALL_ARTIFACTS ./ALL_ARTIFACTS --recursive 
-                           
-                            
                       
                             echo "LINE 3 *****************"
                             file_NAME=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')`
@@ -49,7 +44,7 @@ pipeline {
               
                          
               } 
-           
+              
          stage('unzipfile'){
             steps{
                     sh """
@@ -57,6 +52,30 @@ pipeline {
                     mkdir file_extracted_$TAG_NAME_DEV
                     unzip -o '*_${TAG_NAME_DEV}.zip' -d file_extracted_$TAG_NAME_DEV
                     """
+                    
+                    
+          
+        }
+     }
+           
+        stage('unzipfile'){
+            when { expression { params.Revert Deployment } }
+            steps{
+                 withAWS(credentials: "${aws_credential}", region: "${region1}"){
+                   sh'''#!/bin/bash
+                    
+                    aws s3 ls s3://$bucket1/1.1.0/  --recursive
+                    ALL_ARTIFACTS=`(aws s3 ls s3://$bucket1/1.1.0/  --recursive | sort | awk '{print \$4}')`
+                    aws s3 cp s3://$bucket1/$ALL_ARTIFACTS  . 
+                    if [$Revert Deployment -eq $ALL_ARTIFACTS]
+                    then
+                       echo 'condition is true 
+                    fi   
+                      
+                    
+                    
+                    
+                    '''
                     
                     
           
