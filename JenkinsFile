@@ -59,8 +59,12 @@ pipeline {
      }
            
         stage('Revert deployement'){
-            when { expression { params.Revert_Deployment } }
+            when {
+                
+                expression { params.Revert_Deployement == '' }
+            }
             steps{
+                
                  withAWS(credentials: "${aws_credential}", region: "${region1}"){
                    sh'''#!/bin/bash
                     
