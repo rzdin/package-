@@ -83,7 +83,7 @@ pipeline {
                  
                  withAWS(credentials: "${aws_credential}", region: "${region1}"){
                    sh'''#!/bin/bash
-                        echo "${params.FILNAME}" 
+                        echo $FILNAME 
                         echo $BRANCH_NAME
                     
                         aws s3 ls s3://$bucket1/1.1.0/  --recursive
