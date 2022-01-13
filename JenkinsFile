@@ -58,7 +58,7 @@ pipeline {
         }
      }
            
-        stage('unzipfile'){
+        stage('Revert deployement'){
             when { expression { params.Revert Deployment } }
             steps{
                  withAWS(credentials: "${aws_credential}", region: "${region1}"){
