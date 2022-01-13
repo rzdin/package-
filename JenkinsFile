@@ -85,6 +85,7 @@ pipeline {
                    sh'''#!/bin/bash
                         
                         echo $BRANCH_NAME
+                        mkdir ALL_ARTIFACTS 
                         echo $FILENAME
                     
                         aws s3 ls s3://$bucket1/1.1.0/  --recursive
@@ -138,6 +139,7 @@ pipeline {
        always { 
            sh """
                 rm -r file_extracted_$TAG_NAME_DEV
+                rm -r ALL_ARTIFACTS
                
            """
         }  
