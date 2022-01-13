@@ -1,9 +1,7 @@
 
 pipeline {
     agent any
-    parameters {
-        string(name: 'FILENAME', description: 'Please tell me your name?')
-        }
+    
    
     environment {
         bucket = "sam-jenkins-demo-us-west-2-rana-ziauddin"
@@ -84,8 +82,9 @@ pipeline {
                  
                  withAWS(credentials: "${aws_credential}", region: "${region1}"){
                    sh'''#!/bin/bash
-                        echo $string 
+                        
                         echo $BRANCH_NAME
+                        echo $FILENAME
                     
                         aws s3 ls s3://$bucket1/1.1.0/  --recursive
                         ALL_ARTIFACTS=`(aws s3 ls s3://$bucket1/1.1.0/  --recursive | sort | awk '{print \$4}')`
