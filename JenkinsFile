@@ -101,6 +101,7 @@ pipeline {
                         if [$FILENAME == $file]
                         then 
                             echo $file
+                        fi    
                         done
                        
 
