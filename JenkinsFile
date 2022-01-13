@@ -28,8 +28,7 @@ pipeline {
                            
                             sh'''#!/bin/bash 
                             echo "LINE 1 *****************"
-                            echo $FILNAME 
-                            echo $BRANCH_NAME
+                           
                             rm -rf *.zip
                             rm -r ALL_FILES_IN_BUCKET
                             ls && pwd
@@ -80,9 +79,12 @@ pipeline {
                 }
             }
             steps{
+                    
                  
                  withAWS(credentials: "${aws_credential}", region: "${region1}"){
                    sh'''#!/bin/bash
+                        echo $FILNAME 
+                        echo $BRANCH_NAME
                     
                         aws s3 ls s3://$bucket1/1.1.0/  --recursive
                         ALL_ARTIFACTS=`(aws s3 ls s3://$bucket1/1.1.0/  --recursive | sort | awk '{print \$4}')`
