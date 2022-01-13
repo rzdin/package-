@@ -97,10 +97,12 @@ pipeline {
                         
                         cd ALL_ARTIFACTS
                         ls -1 && pwd
-                        for file in /ALL_ARTIFACTS/*; do
-                            if ["$FILENAME" == "$file"]
+                        for file in ALL_ARTIFACTS/; do
+                            if [$FILENAME == $file]
                             then 
-                                echo $file
+                                echo $FILENAME
+                            else 
+                                echo "NOT FOUND"
                             fi    
                         done
                        
