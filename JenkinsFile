@@ -102,7 +102,7 @@ pipeline {
                             if [ $FILENAME == $FILE ]
                             then
                                echo $FILE
-                                unzip -o '$FILE' -d revert_deployment 
+                               unzip -o '$FILE' -d revert_deployment 
                             else 
                                echo "NOT FOUND"
                             fi   
@@ -136,7 +136,7 @@ pipeline {
          }
        
      
-     post{ 
+   post{ 
        always { 
            sh """
                 rm -r file_extracted_$TAG_NAME_DEV
