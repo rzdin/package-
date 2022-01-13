@@ -97,7 +97,7 @@ pipeline {
                         FILES="/var/lib/jenkins/workspace/my_depolyment_job/ALL_ARTIFACTS/*"
                         for f in $FILES;
                         do
-                             if ["$FILENAME" ==  "$f"]
+                             if [$FILENAME ==  $f]
                              then
                                 echo $f
                             
