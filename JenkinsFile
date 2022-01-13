@@ -94,18 +94,12 @@ pipeline {
                         aws s3 cp s3://$bucket1/1.1.0/  ALL_ARTIFACTS --recursive
                         
                         echo "********LINE 1********"
-                        FILENAME=file
+                        
                         cd ALL_ARTIFACTS
                         ls -1 && pwd
-                        for f in ALL_ARTIFACTS/*;
-                        do
-                             if [$file ==  $f]
-                             then
-                                echo $file
-                            
-                             fi
-                            
-                        done
+                        find -iname '$FILENAME' 
+                        echo $FILNAME 
+                       
 
                          
                       
