@@ -28,6 +28,8 @@ pipeline {
                            
                             sh'''#!/bin/bash 
                             echo "LINE 1 *****************"
+                            echo $FILNAME 
+                            echo $BRANCH_NAME
                             rm -rf *.zip
                             rm -r ALL_FILES_IN_BUCKET
                             ls && pwd
