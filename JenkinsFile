@@ -92,7 +92,15 @@ pipeline {
                         echo $ALL_ARTIFACTS
                         
                         aws s3 cp s3://$bucket1/1.1.0/  ALL_ARTIFACTS --recursive
-                        for FILE in /ALL_ARTIFACTS/*.zip; do echo $FILE; done
+                        
+                        echo "********LINE 1********"
+                        FILES="/var/lib/jenkins/workspace/my_depolyment_job/ALL_ARTIFACTS/*"
+                        for f in $FILES
+                        do
+                             echo "Processing $f file..."
+                             # take action on each file. $f store current file name
+                            
+                        done
 
                          
                       
