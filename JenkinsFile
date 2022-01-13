@@ -95,13 +95,14 @@ pipeline {
                         aws s3 cp s3://$bucket1/1.1.0/  ALL_ARTIFACTS --recursive
                         
                         echo "********LINE 1********"
-                        
+                        mkdir revert_deployment 
                         cd ALL_ARTIFACTS
                         ls -1 && pwd
                         for FILE in *; do 
                             if [ $FILENAME == $FILE ]
                             then
                                echo $FILE
+                                unzip -o '$FILE' -d revert_deployment 
                             else 
                                echo "NOT FOUND"
                             fi   
