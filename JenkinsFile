@@ -2,7 +2,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'FILENAME', string:'' , description: 'Please tell me your name?')
+        string(name: 'FILENAME', description: 'Please tell me your name?')
         }
    
     environment {
@@ -84,7 +84,7 @@ pipeline {
                  
                  withAWS(credentials: "${aws_credential}", region: "${region1}"){
                    sh'''#!/bin/bash
-                        echo $FILNAME 
+                        echo $string 
                         echo $BRANCH_NAME
                     
                         aws s3 ls s3://$bucket1/1.1.0/  --recursive
