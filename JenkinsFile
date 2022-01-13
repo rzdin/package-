@@ -1,6 +1,9 @@
 
 pipeline {
     agent any
+    parameters {
+        string(name: 'FILENAME', string:'' , description: 'Please tell me your name?')
+        }
    
     environment {
         bucket = "sam-jenkins-demo-us-west-2-rana-ziauddin"
@@ -73,7 +76,7 @@ pipeline {
         stage('Revert deployement'){
             when {
                 
-                expression { params.FILENAME == '' && params.BRANCH_NAME
+                expression { params.FILENAME && params.BRANCH_NAME
                 }
             }
             steps{
