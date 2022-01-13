@@ -101,6 +101,8 @@ pipeline {
                             if [ $FILENAME == $FILE ]
                             then
                                echo "FILE EXITS"
+                            else 
+                                echo "NOT FOUND"
                             fi   
                         done
                             
