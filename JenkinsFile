@@ -102,6 +102,7 @@ pipeline {
                             if [ $FILENAME == $FILE ]
                             then
                                echo $FILE
+                               ls -1 $FILE
                                
                             else 
                                echo "NOT FOUND"
