@@ -84,9 +84,9 @@ pipeline {
                  withAWS(credentials: "${aws_credential}", region: "${region1}"){
                    sh'''#!/bin/bash
                         
-                        echo $BRANCH_NAME
+                        
                         mkdir ALL_ARTIFACTS 
-                        echo $FILENAME
+                       
                     
                         aws s3 ls s3://$bucket1/1.1.0/  --recursive
                         aws s3 ls s3://$bucket1/1.1.0/  --recursive | sort 
@@ -102,13 +102,12 @@ pipeline {
                             if [ $FILENAME == $FILE ]
                             then
                                echo $FILE
-                               cp $FILE /revert_deployment 
+                               
                             else 
                                echo "NOT FOUND"
                             fi   
                         done
-                        cd revert_deployment
-                        ll
+                       
                        
 
                          
