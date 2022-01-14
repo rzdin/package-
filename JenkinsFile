@@ -95,7 +95,7 @@ pipeline {
                         aws s3 cp s3://$bucket1/1.1.0/  ALL_ARTIFACTS --recursive
                         
                         echo "********LINE 1********"
-                        mkdir revert_deployment 
+                  
                         cd ALL_ARTIFACTS
                         ls -1 && pwd
                         for FILE in *; do 
@@ -116,10 +116,36 @@ pipeline {
 
                          
                       
-                    
+               
                     
                     
                     '''
+                    
+                    
+          }
+        }
+     }
+      stage('Revert deployement'){
+            when {
+                
+                expression { params.FILENAME && params.BRANCH_NAME
+                }
+            }
+            steps{
+                   withAWS(credentials: "${aws_credential}", region: "${region}"){
+                     
+                       s3Upload(file:"/ALL_ARTIFACTS/revert_deployment/*", bucket:"${bucket}/1.1.0")
+                 
+                
+                       
+                       
+
+                         
+                      
+               
+                    
+                    
+                   
                     
                     
           }
