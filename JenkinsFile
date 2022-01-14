@@ -64,7 +64,7 @@ pipeline {
                     sh """
                     
                     mkdir file_extracted_$TAG_NAME_DEV
-                    unzip -o '*_${TAG_NAME_DEV}.zip' -d file_extracted_$TAG_NAME_DEV
+                    unzip -o  *_${TAG_NAME_DEV}.zip -d file_extracted_$TAG_NAME_DEV
                     """
                     
                     
