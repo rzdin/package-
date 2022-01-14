@@ -102,7 +102,7 @@ pipeline {
                             if [ "$FILENAME" == $FILE ]
                             then
                                echo $FILE
-                               unzip '$FILE' 
+                               unzip $FILE
                                
                                
                                
