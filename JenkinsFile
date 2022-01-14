@@ -99,10 +99,10 @@ pipeline {
                         cd ALL_ARTIFACTS
                         ls -1 && pwd
                         for FILE in *; do 
-                            if [ $FILENAME == $FILE ]
+                            if [ "$FILENAME" == $FILE ]
                             then
                                echo $FILE
-                               ls -1 $FILE
+                               
                                
                             else 
                                echo "NOT FOUND"
