@@ -134,7 +134,7 @@ pipeline {
             steps{
                    withAWS(credentials: "${aws_credential}", region: "${region}"){
                      
-                       s3Upload(file:"/ALL_ARTIFACTS/revert_deployment/*", bucket:"${bucket}/1.1.0")
+                       s3Upload(file:"ALL_ARTIFACTS/revert_deployment/*", bucket:"${bucket}/1.1.0")
                  
                 
                        
