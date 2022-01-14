@@ -102,11 +102,14 @@ pipeline {
                             if [ "$FILENAME" == $FILE ]
                             then
                                echo $FILE
+                               unzip '$FILE' 
+                               
                                
                                
                             else 
                                echo "NOT FOUND"
-                            fi   
+                            fi 
+                            
                         done
                        
                        
