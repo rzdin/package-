@@ -33,11 +33,11 @@ pipeline {
                             rm -r ALL_FILES_IN_BUCKET
                             ls && pwd
                             echo "LINE 2 *****************"
-                            aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive
+                            aws s3 ls s3://$bucket1  --recursive
                             
                       
                             echo "LINE 3 *****************"
-                            file_NAME=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')`
+                            file_NAME=`(aws s3 ls s3://$bucket1  --recursive | sort | tail -n 1 | awk '{print \$4}')`
                            
                             
                             echo "LINE 4 *****************"
@@ -64,7 +64,7 @@ pipeline {
                     sh """
                     
                     mkdir file_extracted_$TAG_NAME_DEV
-                    unzip -o '*_${TAG_NAME_DEV}.zip' -d file_extracted_$TAG_NAME_DEV
+                    unzip -o '*_$TAG_NAME_DEV.zip' -d file_extracted_$TAG_NAME_DEV
                     """
                     
                     
@@ -88,11 +88,11 @@ pipeline {
                         mkdir ALL_ARTIFACTS 
                        
                     
-                        aws s3 ls s3://$bucket1/1.1.0/  --recursive
-                        aws s3 ls s3://$bucket1/1.1.0/  --recursive | sort 
+                        aws s3 ls s3://$bucket1  --recursive
+                        aws s3 ls s3://$bucket1  --recursive | sort 
                         echo $ALL_ARTIFACTS
                         
-                        aws s3 cp s3://$bucket1/1.1.0/  ALL_ARTIFACTS --recursive
+                        aws s3 cp s3://$bucket1  ALL_ARTIFACTS --recursive
                         
                         echo "********LINE 1********"
                   
@@ -134,7 +134,7 @@ pipeline {
             steps{
                    withAWS(credentials: "${aws_credential}", region: "${region}"){
                      
-                       s3Upload(file:"ALL_ARTIFACTS/revert_deployment/", bucket:"${bucket}/1.1.0")
+                       s3Upload(file:"ALL_ARTIFACTS/revert_deployment/", bucket:"${bucket}")
                  
                 
                        
@@ -160,7 +160,7 @@ pipeline {
             steps{
                    withAWS(credentials: "${aws_credential}", region: "${region}"){
                      
-                       s3Upload(file:"file_extracted_$TAG_NAME_DEV", bucket:"${bucket}/${TAG_NAME_DEV}")
+                       s3Upload(file:"file_extracted_$TAG_NAME_DEV", bucket:"${bucket}")
                     
              }
          }
