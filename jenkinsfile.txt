@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+    environment {
+        bucket = "sam-jenkins-demo-us-east-2-ranaziauddin"
+        region = "us-east-2"
+        aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com"
+        application_name = "Nodejs"
+       
+       
+    }
+     stages{
+        stage('get git tag') {
+            steps {
+             script {
+             latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
+             env.BUILD_VERSION = latestTag
+             echo "env-BUILD_VERSION"
+             echo "${env.BUILD_VERSION}"
+            }
+        }
+    }
+        stage("Nodejs build"){
+            tools {nodejs "NODEJS"}
+            steps {
+                sh 'rm -rf *.zip'
+                sh "npm install"
+                echo "***********LINE***********"
+                echo "**********LINE2***********"
+               
+               
+    
+                sh "zip 'myapp_${BUILD_TIMESTAMP}_${env.BUILD_VERSION}.zip' db jenkinsfile JenkinsFile model  node_modules/*  README.md utils handler  LICENSE myapp  package.json  serverless.yml"
+                
+             
+                
+              }
+  }
+       stage("Upload"){
+            steps{
+                withAWS(credentials: "${aws_credential}", region: "${region}"){
+                s3Upload(file:"myapp_${BUILD_TIMESTAMP}_${env.BUILD_VERSION}.zip", bucket:"${bucket}")
+               
+                  }
+            }
+     post { 
+        always { 
+            archiveArtifacts artifacts: '*.zip'
+         }
+       }
+    }  
+ }
+}
