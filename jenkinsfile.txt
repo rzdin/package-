@@ -26,6 +26,7 @@ pipeline {
                 sh "npm install"
                 echo "***********LINE***********"
                 echo "**********LINE2***********"
+                echo "*********LINE3*************"
                
                
     
