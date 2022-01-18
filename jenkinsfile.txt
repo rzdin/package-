@@ -17,6 +17,8 @@ pipeline {
              echo "env-BUILD_VERSION"
              echo "${env.BUILD_VERSION}"
 	     echo "*******LINE_1******"	
+	     echo "*******LINE_2******"
+					
             }
         }
     }
