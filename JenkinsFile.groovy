@@ -27,7 +27,7 @@ pipeline {
                            
                             sh'''#!/bin/bash 
                             echo "LINE 1 *****************"
-                            aws s3api list-objects --bucket $bucket1 --query 'Objects[?starts_with(Name, `myapp-`) == `true`].Name'
+                            aws s3api list-objects --bucket $bucket1 --query 'Objects[?starts_with(Name: `myapp-`) == `true`].Name'
                          
                             rm -rf *.zip
                             rm -r ALL_FILES_IN_BUCKET
