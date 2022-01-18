@@ -27,7 +27,7 @@ pipeline {
                            
                             sh'''#!/bin/bash 
                             echo "LINE 1 *****************"
-                            aws s3api list-objects --bucket $bucket1 --query "Contents[?contains(Key, `$TAG_NAME_DEV`)]"
+                            aws s3api list-objects --bucket $bucket1 --query "Contents[?contains(Key, `myapp_*_${TAG_NAME_DEV}.zip`)]"
                          
                             rm -rf *.zip
                             rm -r ALL_FILES_IN_BUCKET
