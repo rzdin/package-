@@ -77,7 +77,7 @@ pipeline {
        stage('Revert deployement'){ //This stage is to revert deployment for the artifact with same version tag but pervious Build Timestamp 
             when {
                 
-                expression { params.FILENAME && params.BRANCH_NAME params.TAG_NAME_DEV    //condition has been applied to execute the stage if both the specified parameters are true 
+                expression { params.FILENAME && params.BRANCH_NAME && params.TAG_NAME_DEV    //condition has been applied to execute the stage if both the specified parameters are true 
                 }
             }
             steps{
