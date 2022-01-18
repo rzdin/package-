@@ -93,11 +93,11 @@ pipeline {
                         mkdir ALL_ARTIFACTS 
                        
                     
-                        aws s3 ls s3://$bucket1  --recursive
-                        aws s3 ls s3://$bucket1  --recursive | sort 
+                        aws s3 ls s3://$bucket1/$TAG_NAME_DEV  --recursive
+                        aws s3 ls s3://$bucket1/$TAG_NAME_DEV  --recursive | sort 
                         echo $ALL_ARTIFACTS
                         
-                        aws s3 cp s3://$bucket1  ALL_ARTIFACTS --recursive
+                        aws s3 cp s3://$bucket1/$TAG_NAME_DEV  ALL_ARTIFACTS --recursive
                         
                         echo "********LINE 1********"
                   
