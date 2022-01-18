@@ -8,7 +8,7 @@ pipeline {
        
        
     }
-     stages{
+     stages{           
         stage('get git tag') {
             steps {
              script {
