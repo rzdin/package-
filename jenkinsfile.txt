@@ -42,7 +42,7 @@ pipeline {
        stage("Upload"){
             steps{
                 withAWS(credentials: "${aws_credential}", region: "${region}"){
-                s3Upload(file:"myapp_${BUILD_TIMESTAMP}_${env.BUILD_VERSION}.zip", bucket:"${bucket}")
+                s3Upload(file:"myapp_${BUILD_TIMESTAMP}_${env.BUILD_VERSION}.zip", bucket:"${bucket}/${env.BUILD_VERSION}")
                
                   }
             }
