@@ -72,12 +72,7 @@ pipeline {
                     
           
         }
-     }
-           
-<<<<<<< HEAD
-=======
-      
->>>>>>> 517b815a816c650cad4e74130b6da8af0b1e070a
+     }         
       stage('uploading'){ //This stage deploy the artifacts from the copy build artifacts stage to se dployement bucket 
             when {
                 
