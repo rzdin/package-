@@ -33,11 +33,11 @@ pipeline {
                             rm -r ALL_FILES_IN_BUCKET
                             ls && pwd
                             echo "LINE 2 *****************"
-                            aws s3 ls s3://$bucket1  --recursive
+                            aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive
                             
                       
                             echo "LINE 3 *****************"
-                            file_NAME=`(aws s3 ls s3://$bucket1  --recursive | sort | tail -n 1 | awk '{print \$4}')`
+                            file_NAME=`(aws s3 ls s3://$bucket1/$TAG_NAME_DEV/  --recursive | sort | tail -n 1 | awk '{print \$4}')`
                            
                             
                             echo "LINE 4 *****************"
